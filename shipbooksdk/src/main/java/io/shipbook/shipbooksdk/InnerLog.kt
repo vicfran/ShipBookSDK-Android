@@ -36,24 +36,24 @@ internal object InnerLog {
     fun message(tag:String, msg: String, severity: Severity, throwable: Throwable?) {
         if (!enabled) return
         val message = "======== $msg"
+        val fullTag = "Shipbook-$tag"
         if (throwable != null) {
             when (severity) {
-                Severity.Error -> Log.e(tag, message, throwable)
-                Severity.Warning -> Log.w(tag, message, throwable)
-                Severity.Info -> Log.i(tag, message, throwable)
-                Severity.Debug -> Log.d(tag, message, throwable)
-                Severity.Verbose -> Log.v(tag, message, throwable)
+                Severity.Error -> Log.e(fullTag, message, throwable)
+                Severity.Warning -> Log.w(fullTag, message, throwable)
+                Severity.Info -> Log.i(fullTag, message, throwable)
+                Severity.Debug -> Log.d(fullTag, message, throwable)
+                Severity.Verbose -> Log.v(fullTag, message, throwable)
                 Severity.Off -> Unit
             }
-
         }
         else {
             when (severity) {
-                Severity.Error -> Log.e(tag, message)
-                Severity.Warning -> Log.w(tag, message)
-                Severity.Info -> Log.i(tag, message)
-                Severity.Debug -> Log.d(tag, message)
-                Severity.Verbose -> Log.v(tag, message)
+                Severity.Error -> Log.e(fullTag, message)
+                Severity.Warning -> Log.w(fullTag, message)
+                Severity.Info -> Log.i(fullTag, message)
+                Severity.Debug -> Log.d(fullTag, message)
+                Severity.Verbose -> Log.v(fullTag, message)
                 Severity.Off -> Unit
             }
         }
